@@ -1,39 +1,63 @@
 {% extends 'citas/base.html' %}
+{% load static %}
 
 {% block title %}Inicio — Veterinaria Maomao{% endblock %}
 
 {% block content %}
 
 <!-- Hero -->
-<div class="text-center py-5">
-    <h1 class="display-4 fw-bold">Veterinaria Maomao 🐾</h1>
-    <p class="lead text-muted">Cuidamos a tus compañeros con amor y dedicación</p>
-    <a href="{% url 'citas:agendar' %}" class="btn btn-primary btn-lg mt-3">Agendar una hora</a>
+<div class="row align-items-center mb-5 py-3">
+    <div class="col-md-6 mb-4 mb-md-0">
+        <h1 class="display-4 fw-bold mb-3">Cuidamos a tus compañeros 🐾</h1>
+        <p class="lead text-muted mb-4">En Veterinaria Maomao brindamos atención profesional y amorosa para todas las mascotas. Agenda tu hora en línea de forma rápida y sencilla.</p>
+        <a href="{% url 'citas:agendar' %}" class="btn btn-primary btn-lg me-2">Agendar una hora</a>
+        <a href="#servicios" class="btn btn-outline-primary btn-lg">Ver servicios</a>
+    </div>
+    <div class="col-md-6">
+        <img src="{% static 'img/hero.jpg' %}" alt="Veterinaria Maomao" class="img-fluid rounded-4 shadow">
+    </div>
 </div>
 
-<hr style="border-color: #6ab0a0;">
-
 <!-- Servicios -->
-<h2 class="text-center mt-5 mb-4">Nuestros servicios</h2>
-<div class="row g-4">
-    {% for servicio in servicios %}
-    <div class="col-md-4">
-        <div class="card h-100 shadow-sm p-4" style="background-color: #e8f5f0;">
-            <h5 class="card-title">{{ servicio.nombre }}</h5>
-            <p class="card-text text-muted">{{ servicio.descripcion }}</p>
-            <small class="text-muted">Duración estimada: {{ servicio.duracion_minutos }} minutos</small>
+<div id="servicios" class="mt-5">
+    <h2 class="text-center mb-2">Nuestros servicios</h2>
+    <p class="text-center text-muted mb-5">Atención especializada para todo tipo de mascotas</p>
+
+    <div class="row g-4">
+        {% for servicio in servicios %}
+        <div class="col-md-4">
+            <div class="card h-100 p-4" style="background-color: #eef7f3;">
+                <h5 class="mb-2">{{ servicio.nombre }}</h5>
+                <p class="text-muted small mb-3">{{ servicio.descripcion }}</p>
+                <span class="badge rounded-pill" style="background-color: #3d7a6a; width: fit-content;">
+                    ⏱ {{ servicio.duracion_minutos }} min
+                </span>
+            </div>
         </div>
+        {% empty %}
+        <p class="text-center text-muted">No hay servicios registrados aún.</p>
+        {% endfor %}
     </div>
-    {% empty %}
-    <p class="text-center text-muted">No hay servicios registrados aún.</p>
-    {% endfor %}
+</div>
+
+<!-- Galería -->
+<div class="row g-4 mt-5">
+    <div class="col-md-4">
+        <img src="{% static 'img/gato.jpg' %}" alt="Gato" class="img-fluid rounded-4 shadow-sm" style="height: 250px; width: 100%; object-fit: cover;">
+    </div>
+    <div class="col-md-4">
+        <img src="{% static 'img/bano.jpg' %}" alt="Baño y peluquería" class="img-fluid rounded-4 shadow-sm" style="height: 250px; width: 100%; object-fit: cover;">
+    </div>
+    <div class="col-md-4">
+        <img src="{% static 'img/exoticos.jpg' %}" alt="Animales exóticos" class="img-fluid rounded-4 shadow-sm" style="height: 250px; width: 100%; object-fit: cover;">
+    </div>
 </div>
 
 <!-- CTA -->
-<div class="text-center mt-5 py-4" style="background-color: #d4ece4; border-radius: 16px;">
-    <h3>¿Listo para agendar?</h3>
-    <p class="text-muted">Completa el formulario y te enviaremos un email de confirmación.</p>
-    <a href="{% url 'citas:agendar' %}" class="btn btn-primary">Agendar ahora</a>
+<div class="text-center mt-5 py-5 rounded-4" style="background: linear-gradient(135deg, #d4ece4, #c8dff5);">
+    <h2>¿Listo para agendar?</h2>
+    <p class="text-muted mb-4">Completa el formulario y recibirás un email para confirmar tu cita.</p>
+    <a href="{% url 'citas:agendar' %}" class="btn btn-primary btn-lg">Agendar ahora</a>
 </div>
 
 {% endblock %}

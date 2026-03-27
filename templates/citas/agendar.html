@@ -1,20 +1,24 @@
 {% extends 'citas/base.html' %}
+{% load static %}
 
 {% block title %}Agendar hora — Veterinaria Maomao{% endblock %}
 
 {% block content %}
 <div class="row justify-content-center">
     <div class="col-md-7">
-        <div class="card shadow-sm p-5" style="background-color: #e8f5f0;">
-            <h2 class="text-center mb-4">Agendar una hora</h2>
+        <div class="text-center mb-4">
+            <h2>Agenda tu hora 📅</h2>
+            <p class="text-muted">Completa el formulario y te enviaremos un email de confirmación.</p>
+        </div>
+        <div class="card p-5" style="background-color: #eef7f3;">
             <form method="post">
                 {% csrf_token %}
                 {% for field in form %}
                 <div class="mb-3">
-                    <label class="form-label fw-semibold">{{ field.label }}</label>
-                    {{ field }}
+                    <label class="form-label fw-semibold" style="color: #3d7a6a;">{{ field.label }}</label>
+                    <div>{{ field }}</div>
                     {% if field.errors %}
-                    <div class="text-danger small">{{ field.errors }}</div>
+                    <div class="text-danger small mt-1">{{ field.errors }}</div>
                     {% endif %}
                 </div>
                 {% endfor %}
