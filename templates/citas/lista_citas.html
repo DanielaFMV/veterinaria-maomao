@@ -1,0 +1,46 @@
+{% extends 'citas/base.html' %}
+
+{% block title %}Citas — Veterinaria Maomao{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Citas agendadas</h2>
+
+{% if citas %}
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead style="background-color: #4a7c6f; color: white;">
+            <tr>
+                <th>Cliente</th>
+                <th>Teléfono</th>
+                <th>Servicio</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cita in citas %}
+            <tr>
+                <td>{{ cita.nombre }} {{ cita.apellido }}</td>
+                <td>{{ cita.telefono }}</td>
+                <td>{{ cita.servicio }}</td>
+                <td>{{ cita.fecha }}</td>
+                <td>{{ cita.hora }}</td>
+                <td>
+                    {% if cita.estado == 'confirmada' %}
+                        <span class="badge" style="background-color: #4a7c6f;">Confirmada</span>
+                    {% elif cita.estado == 'pendiente' %}
+                        <span class="badge bg-warning text-dark">Pendiente</span>
+                    {% else %}
+                        <span class="badge bg-danger">Cancelada</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p class="text-muted">No hay citas agendadas aún.</p>
+{% endif %}
+{% endblock %}

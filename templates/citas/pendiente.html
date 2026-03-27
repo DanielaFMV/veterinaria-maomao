@@ -1,0 +1,13 @@
+{% extends 'citas/base.html' %}
+
+{% block title %}Cita pendiente — Veterinaria Maomao{% endblock %}
+
+{% block content %}
+<div class="text-center py-5">
+    <div style="font-size: 4rem;">📬</div>
+    <h2 class="mt-3">¡Solicitud recibida!</h2>
+    <p class="lead text-muted">Te enviamos un email con el link para confirmar tu cita.</p>
+    <p class="text-muted">Revisa tu bandeja de entrada y haz clic en el enlace de confirmación.</p>
+    <a href="{% url 'citas:inicio' %}" class="btn btn-primary mt-3">Volver al inicio</a>
+</div>
+{% endblock %}
