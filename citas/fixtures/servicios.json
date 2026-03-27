@@ -1,0 +1,47 @@
+[
+  {
+    "model": "citas.servicio",
+    "pk": 1,
+    "fields": {
+      "nombre": "Consulta general",
+      "descripcion": "Revisión general del estado de salud de tu mascota con nuestros veterinarios.",
+      "duracion_minutos": 30
+    }
+  },
+  {
+    "model": "citas.servicio",
+    "pk": 2,
+    "fields": {
+      "nombre": "Vacunas",
+      "descripcion": "Aplicación de vacunas según calendario sanitario vigente.",
+      "duracion_minutos": 20
+    }
+  },
+  {
+    "model": "citas.servicio",
+    "pk": 3,
+    "fields": {
+      "nombre": "Baño y peluquería",
+      "descripcion": "Baño, secado y corte especializado según la raza de tu mascota.",
+      "duracion_minutos": 60
+    }
+  },
+  {
+    "model": "citas.servicio",
+    "pk": 4,
+    "fields": {
+      "nombre": "Cirugía",
+      "descripcion": "Procedimientos quirúrgicos programados con equipo especializado.",
+      "duracion_minutos": 120
+    }
+  },
+  {
+    "model": "citas.servicio",
+    "pk": 5,
+    "fields": {
+      "nombre": "Consulta animales exóticos",
+      "descripcion": "Atención especializada para aves, reptiles y otros animales no convencionales.",
+      "duracion_minutos": 40
+    }
+  }
+]
