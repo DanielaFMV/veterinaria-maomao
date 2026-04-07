@@ -85,7 +85,9 @@
                 <ul class="navbar-nav ms-auto gap-2">
                     <li class="nav-item"><a class="nav-link" href="{% url 'citas:inicio' %}">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'citas:agendar' %}">Agendar hora</a></li>
+                    {% if user.is_authenticated %}
                     <li class="nav-item"><a class="nav-link" href="{% url 'citas:lista_citas' %}">Citas</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </div>

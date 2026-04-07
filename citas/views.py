@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.mail import send_mail
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 from .models import Cita, Servicio
 from .forms import CitaForm
 
@@ -67,6 +68,7 @@ def confirmar_cita(request, token):
     return render(request, 'citas/confirmada.html', {'cita': cita})
 
 
+@login_required
 def lista_citas(request):
     citas = Cita.objects.all()
     return render(request, 'citas/lista_citas.html', {'citas': citas})
