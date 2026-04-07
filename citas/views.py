@@ -19,10 +19,10 @@ def agendar(request):
             # Armar el link de confirmación con el token único de la cita
             link = request.build_absolute_uri(f'/confirmar/{cita.token}/')
 
-            # Enviar email de confirmación
-            send_mail(
-                subject='Confirma tu cita — Veterinaria Maomao',
-                message=f"""
+            try:
+                send_mail(
+                    subject='Confirma tu cita — Veterinaria Maomao',
+                    message=f"""
 Hola {cita.nombre},
 
 Recibimos tu solicitud de cita en Veterinaria Maomao.
@@ -38,10 +38,12 @@ Para confirmar tu cita haz clic en el siguiente enlace:
 Si no agendaste esta cita, ignora este mensaje.
 
 Veterinaria Maomao
-                """,
-                from_email=settings.EMAIL_HOST_USER,
-                recipient_list=[cita.email],
-            )
+                    """,
+                    from_email=settings.EMAIL_HOST_USER,
+                    recipient_list=[cita.email],
+                )
+            except Exception:
+                pass
 
             return redirect('citas:cita_pendiente')
     else:
